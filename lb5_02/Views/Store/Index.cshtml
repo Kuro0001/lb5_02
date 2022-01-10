@@ -1,0 +1,155 @@
+﻿@{
+    ViewData["Title"] = "Store";
+}
+
+@using (Html.BeginForm("Add", "Store", FormMethod.Post))
+{
+    <div class="contaner">
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                <p>Наименование продукта</p>
+                <input type="text" name="Name" value="" />
+            </li>
+
+            <li class="nav-item">
+
+                @if (ViewBag.action == "add")
+                {
+                    @if (ViewBag.message == "Продукт добавлен")
+                    {
+                        <p id="table" name="table">@ViewBag.message (наименование товара: @ViewBag.message_item_name)</p>
+                        <p>
+                            Количество продуктов в магазине стало: @ViewBag.count
+                        </p>
+                    }
+                    else
+                    {
+                        <p id="table" name="table">@ViewBag.message</p>
+                    }
+                }
+            </li>
+
+            <li class="nav-item">
+                <input class="btn btn-primary" @*name="add"*@ type="submit" value="Добавить">
+            </li>
+
+        </ul>
+    </div>}
+
+<li></li>
+
+@using (Html.BeginForm("Delete", "Store", FormMethod.Post))
+{
+    <div class="contaner">
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                <p>Наименование продукта</p>
+                <input type="text" name="Name" value="" />
+            </li>
+
+            <li class="nav-item">
+                @if (ViewBag.action == "delete")
+                {
+                    @if (ViewBag.message == "Продукт удален")
+                    {
+                        <p id="table" name="table">@ViewBag.message (наименование товара: @ViewBag.message_item_name)</p>
+                        <p>
+                            Количество продуктов в магазине стало: @ViewBag.count
+                        </p>
+                    }
+                    else
+                    {
+                        <p id="table" name="table">@ViewBag.message</p>
+                    }
+                }
+            </li>
+
+            <li class="nav-item">
+                <input class="btn btn-primary" @*name="delete"*@ type="submit" value="Удалить">
+            </li>
+        </ul>
+    </div>}
+
+<li></li>
+
+@using (Html.BeginForm("PutOn", "Store", FormMethod.Post))
+{
+    <div class="contaner">
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                <p>Наименование продукта</p>
+                <input type="text" name="Name" value="" />
+            </li>
+
+            <li class="nav-item">
+                @if (ViewBag.action == "PutOn")
+                {
+                    @if (ViewBag.message == "Продукт выложен на прилавок")
+                    {
+                        <p id="table" name="table">@ViewBag.message (наименование товара: @ViewBag.message_item_name)</p>
+                        <p>
+                            Количество продуктов на прилавке стало: @ViewBag.count_on_counter
+                            Количество продуктов не на прилавке стало: @ViewBag.count_not_on_counter
+                        </p>
+                    }
+                    else
+                    {
+                        <p id="table" name="table">@ViewBag.message</p>
+                    }
+                }
+            </li>
+
+            <li class="nav-item">
+                <input class="btn btn-primary" @*name="putOn"*@ type="submit" value="Выложить на прилавок">
+            </li>
+        </ul>
+    </div>}
+
+<li></li>
+
+@using (Html.BeginForm("PutOff", "Store", FormMethod.Post))
+{
+    <div class="contaner">
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                @if (ViewBag.action == "PutOff")
+                {
+                    <p id="table" name="table">@ViewBag.message</p>
+                }
+            </li>
+
+            <li class="nav-item">
+                <input class="btn btn-primary" @*name="putOff"*@ type="submit" value="Снять с прилавка">
+            </li>
+        </ul>
+    </div>}
+
+<li></li>
+
+@using (Html.BeginForm("TableList", "Store", FormMethod.Post))
+{
+    <div class="contaner">
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                <input class="btn btn-primary" @*name="read"*@ type="submit" value="Показать список">
+            </li>
+            @if (ViewBag.count > 0)
+            {
+                <li class="nav-item">
+                    <p>Количество продуктов в магазине: @ViewBag.count</p>
+                    <p>
+                        Количество продуктов на прилавке: @ViewBag.count_on_counter
+                        Количество продуктов не на прилавке: @ViewBag.count_not_on_counter
+                    </p>
+                </li>
+                <li class="nav-item">
+                    <p id="table" name="table">@ViewBag.products</p>
+                </li>
+            }
+            else
+            {
+                <p>Магазин пуст</p>
+            }
+        </ul>
+    </div>}
+
